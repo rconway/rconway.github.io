@@ -1,23 +1,19 @@
----
-layout: default
----
+<html>
+	<head>
+		<title>index.html</title>
+		<link rel="stylesheet" href="app.css" />
+	</head>
+	<body>
+		<p class="div-a">Hello</p>
+		<p class="div-b">World</p>
 
-<div class="home">
+		<div class="rac-box"></div>
 
-  <h1 class="page-heading">Posts</h1>
+		<div class="rac-circle"><p>A</p></div>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+		<div class="rac-circle2"><p>B</p></div>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+		<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script src="./app.js"></script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+
+.div-a {
+	background-color: black;
+	color: white;
+}
+
+.div-b {
+	background-color: white;
+	color: black;
+}
+
+.rac-box {
+	position: absolute;
+	background-color: yellow;
+	height: 100px;
+	width: 100px;
+}
+
+.rac-circle {
+	position: absolute;
+	background-color: red;
+	height: 50px;
+	width: 50px;
+	left: 50px;
+	top: 300px;
+	border-radius: 50%;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.rac-circle2 {
+	position: relative;
+	background-color: blue;
+	height: 50px;
+	width: 50px;
+	left: 150px;
+	top: 300px;
+	border-radius: 50%;
+}
+
+.rac-circle2 p {
+	position: absolute;
+	height: auto;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+.gold {
+	background-color: gold;
+	color: red;
+}
+
+.silver {
+	background-color: silver;
+	color: blue;
+}
