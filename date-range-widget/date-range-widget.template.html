@@ -1,0 +1,51 @@
+
+<div class="DateRangeWidget" ng-form="$ctrl.widgetForm">
+
+<!--
+  Put the widget in a fieldset named 'dateRangeWidget' with an attached ng-model that is
+  the output data 'dateSelection'. The fieldset has no actual input, so why bother
+  attaching the ng-model ? -> The answer is that only by attaching the ng-model to
+  the fieldset does it get attached to the ng-form (widgetForm).
+  Thus, using a fieldset with name/ng-model allows us to attach some 'widget-level'
+  form validation.
+  -->
+<fieldset class="form-group" name="dateRangeWidget" ng-model="$ctrl.dateSelection">
+
+  <legend>{{$ctrl.config.label}}</legend>
+
+  <!-- Widget-level validation messages -->
+  <span class="text-danger" ng-show="$ctrl.widgetForm.dateRangeWidget.$error.dateStartEnd">Start date must be before End date</span>
+
+  <div class="row">
+
+    <!-- start date input -->
+    <div class="col-xs-6">
+      Start: <input type="date" name="startDate" ng-model="$ctrl.startDate" ng-min="$ctrl.config.details.range[0]" ng-max="$ctrl.config.details.range[1]" ng-change="$ctrl.updateDate()" class="form-control" ng-required="$ctrl.config.required">
+
+      <!-- validation messages -->
+      <span class="text-danger" ng-show="$ctrl.widgetForm.startDate.$error.required">Start Date is required</span>
+      <span class="text-danger" ng-show="$ctrl.widgetForm.startDate.$error.date">Start Date bad format</span>
+      <span class="text-danger" ng-show="$ctrl.widgetForm.startDate.$error.min || $ctrl.widgetForm.startDate.$error.max">Start Date out of range</span>
+    </div>
+
+    <!-- end date input -->
+    <div class="col-xs-6">
+      End: <input type="date" name= "endDate" ng-model="$ctrl.endDate" ng-min="$ctrl.config.details.range[0]" ng-max="$ctrl.config.details.range[1]" ng-change="$ctrl.updateDate()" class="form-control" ng-required="$ctrl.config.required">
+
+      <!-- validation messages -->
+      <span class="text-danger" ng-show="$ctrl.widgetForm.endDate.$error.required">End Date is required</span>
+      <span class="text-danger" ng-show="$ctrl.widgetForm.endDate.$error.date">End Date bad format</span>
+      <span class="text-danger" ng-show="$ctrl.widgetForm.endDate.$error.min || $ctrl.widgetForm.endDate.$error.max">End Date out of range</span>
+    </div>
+
+  </div>
+
+</fieldset>
+
+<div ng-show="$ctrl.debug">
+<pre>
+DEBUG: dateSelection = {{$ctrl.dateSelection}}
+</pre>
+</div>
+
+</div>

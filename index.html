@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="formApp">
+  <head>
+    <meta charset="utf-8">
+    <title>ECMWF Climate Data Service</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+
+    <!-- jquery -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+
+    <!-- angular -->
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+
+    <!--
+      dummy angular module - to be replaced by the drupal-angular wrapper
+      - must depend on the formBuilder module (see app.module.js)
+    -->
+    <link rel="stylesheet" href="app.css" />
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+
+    <!-- form builder -->
+    <script src="form-builder/form-builder.module.js"></script>
+    <script src="form-builder/form-builder.component.js"></script>
+
+    <!-- date-range-widget -->
+    <script src="date-range-widget/date-range-widget.module.js"></script>
+    <script src="date-range-widget/date-range-widget.component.js"></script>
+
+    <!-- string-list-widget -->
+    <script src="string-list-widget/string-list-widget.module.js"></script>
+    <script src="string-list-widget/string-list-widget.component.js"></script>
+
+    <!-- string-list-array-widget -->
+    <script src="string-list-array-widget/string-list-array-widget.module.js"></script>
+    <script src="string-list-array-widget/string-list-array-widget.component.js"></script>
+  </head>
+  <body>
+
+    <div ng-view></div>
+
+  </body>
+</html>

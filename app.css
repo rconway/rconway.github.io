@@ -1,0 +1,16 @@
+
+.FormBuilder {
+  background-color: bisque;
+}
+
+.DateRangeWidget {
+  background-color: lightcyan;
+}
+
+.StringListWidget {
+  background-color: lightpink;
+}
+
+.StringListArrayWidget {
+  background-color: #ebffcc;
+}

@@ -1,0 +1,63 @@
+
+<div class="FormBuilder container">
+
+  <form novalidate class="row" name="$ctrl.cdsForm" ng-submit="$ctrl.cdsForm.$valid && $ctrl.formSubmit()">
+
+    <h2>{{$ctrl.datasetSpec.title}}</h2>
+
+    <!--
+      Use of section here (and nowhere else) is important here, as the form builder
+      code searches for the first 'section' as the location to insert the dynamic content.
+    -->
+    <section>
+      <!-- dynamic content goes here -->
+    </section>
+
+    <!-- Buttons -->
+    <fieldset class="form-group" ng-show="$ctrl.form != undefined">
+      <input type="button" class="btn btn-primary pull-left" ng-value="$ctrl.showRequest && 'Hide Request' || 'Show Request'" ng-click="$ctrl.showRequest = !$ctrl.showRequest" />
+      <input type="submit" class="btn btn-primary pull-right" value="Submit Form" ng-disabled="$ctrl.cdsForm.$invalid" />
+    </fieldset>
+
+    <div class="row" ng-show="$ctrl.submitStatus && $ctrl.cdsForm.$pristine">
+      <div class="col-xs-12">
+        <h4><p class="text-center" ng-class="{'text-danger': !$ctrl.submitSuccess}">{{$ctrl.submitStatus}}</p></h4>
+      </div>
+    </div>
+
+    <!--
+      Request panel - using Angular animations.
+      Set the animation styles here.
+    -->
+    <style>
+    .request-panel {
+      transition: all linear 0.5s;
+    }
+    .request-panel.ng-hide {
+      opacity: 0;
+    }
+    </style>
+    <!-- Put the 'ng-hide' class on the control initially, which suppresses the hide
+         animation during page load -->
+    <div class="request-panel ng-hide" ng-show="$ctrl.showRequest">
+      <h5>Preview of request to be submitted...</h5>
+      <pre>
+{{$ctrl.requestToBroker | json}}
+      </pre>
+    </div>
+
+    <!-- DEBUG -->
+    <div ng-show="$ctrl.debug">
+      <h4>FormBuilder Debug...</h4>
+      <pre>
+DEBUG: Validity of form = {{$ctrl.cdsForm.$valid | json}}
+DEBUG: form $pristine = {{$ctrl.cdsForm.$pristine | json}}
+DEBUG: form $submitted = {{$ctrl.cdsForm.$submitted | json}}
+DEBUG: The JSON model object looks like this...
+{{$ctrl.model | json}}
+      </pre>
+    </div>
+
+  </form>
+
+</div>
