@@ -15,7 +15,9 @@ component('geographicExtentWidget', {
   controller: function GeographicExtentWidgetController($scope, $element, $timeout) {
     var self = this;
     
-    self.GLOBAL = { s: -90, w: -180, n: 90, e: -180 };
+    self.GLOBAL = { s: -90, w: -180, n: 90, e: 179 };
+    self.EUROPE = { s: 35, w: -26, n: 72, e: 46 };
+    self.NORTH_AMERICA = { s: 8, w: -169, n: 72, e: -52 };
     self.STOTFOLD = { s: 52.01384492765967, w: -0.22976875305175784, n: 52.015007091239326, e: -0.22740840911865237 };
 
     // The extent entered by the user (view model)
