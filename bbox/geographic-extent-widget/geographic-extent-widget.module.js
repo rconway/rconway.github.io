@@ -15,10 +15,11 @@ component('geographicExtentWidget', {
   controller: function GeographicExtentWidgetController($scope, $element, $timeout) {
     var self = this;
     
-    self.GLOBAL = { s: -90, w: -180, n: 90, e: 179 };
+    self.GLOBAL = { s: -85, w: -180, n: 85, e: 179 };
     self.EUROPE = { s: 35, w: -26, n: 72, e: 46 };
     self.NORTH_AMERICA = { s: 8, w: -169, n: 72, e: -52 };
-    self.STOTFOLD = { s: 52.01384492765967, w: -0.22976875305175784, n: 52.015007091239326, e: -0.22740840911865237 };
+    //self.STOTFOLD = { s: 52.01384492765967, w: -0.22976875305175784, n: 52.015007091239326, e: -0.22740840911865237 };
+    self.STOTFOLD = { s: 52.014, w: -0.230, n: 52.015, e: -0.228 };
 
     // The extent entered by the user (view model)
     self.vmExtent = {};
@@ -174,10 +175,10 @@ component('geographicExtentWidget', {
     
     self.updateModelFromAreaSelection = function() {
       var area = self.areaSelect.getBounds();
-      self.vmExtent.w = self.round(area._southWest.lng, 3);
-      self.vmExtent.s = self.round(area._southWest.lat, 3);
       self.vmExtent.n = self.round(area._northEast.lat, 3);
       self.vmExtent.e = self.round(area._northEast.lng, 3);
+      self.vmExtent.s = self.round(area._southWest.lat, 3);
+      self.vmExtent.w = self.round(area._southWest.lng, 3);
       self.updateExtent();
     }
 
@@ -218,7 +219,8 @@ component('geographicExtentWidget', {
     }
     
     self.setBoundingBox = function(bbox) {
-      self.vmExtent = bbox;
+      self.vmExtent = { n: bbox.n, e: bbox.e, s: bbox.s, w: bbox.w };
+      self.updateExtent();
       self.setMapFromModel();
     }
 
